@@ -1,8 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import mongoose from 'mongoose';
 import { Activity, LeaderboardEntry, Team, User, Workout } from './models';
+import { connectToDatabase, mongoUri } from './config/database';
 
 dotenv.config();
 
@@ -49,12 +49,9 @@ app.get('/api/workouts', async (_req, res) => {
   res.json(workouts);
 });
 
-const mongoUri = process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/octofit_db';
-
-mongoose
-  .connect(mongoUri)
+connectToDatabase()
   .then(() => {
-    console.log('Connected to MongoDB');
+    console.log(`Connected to MongoDB at ${mongoUri}`);
   })
   .catch((error) => {
     console.error('MongoDB connection failed:', error);
