@@ -1,121 +1,116 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
+import { Link, Route, Routes } from 'react-router-dom'
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
-
+function Home() {
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
+    <div className="container py-5">
+      <div className="row align-items-center g-4">
+        <div className="col-lg-7">
+          <h1 className="display-5 fw-bold">OctoFit Tracker</h1>
+          <p className="lead text-muted">
+            A modern multi-tier fitness platform for logging activities, building
+            teams, and tracking progress in real time.
           </p>
+          <div className="d-flex gap-3">
+            <Link className="btn btn-primary" to="/dashboard">
+              View dashboard
+            </Link>
+            <Link className="btn btn-outline-secondary" to="/about">
+              Learn more
+            </Link>
+          </div>
         </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
-
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
+        <div className="col-lg-5">
+          <div className="card shadow-sm border-0">
+            <div className="card-body">
+              <h2 className="h5">What is included?</h2>
+              <ul className="mb-0">
+                <li>Activity logging</li>
+                <li>Team management</li>
+                <li>Workout suggestions</li>
+                <li>Leaderboard insights</li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+      </div>
+    </div>
+  )
+}
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+function Dashboard() {
+  return (
+    <div className="container py-5">
+      <h2 className="mb-3">Dashboard</h2>
+      <div className="row g-3">
+        <div className="col-md-4">
+          <div className="card shadow-sm border-0">
+            <div className="card-body">
+              <h3 className="h6">Daily activity</h3>
+              <p className="display-6 mb-0">12</p>
+            </div>
+          </div>
+        </div>
+        <div className="col-md-4">
+          <div className="card shadow-sm border-0">
+            <div className="card-body">
+              <h3 className="h6">Active teams</h3>
+              <p className="display-6 mb-0">4</p>
+            </div>
+          </div>
+        </div>
+        <div className="col-md-4">
+          <div className="card shadow-sm border-0">
+            <div className="card-body">
+              <h3 className="h6">Leaderboard</h3>
+              <p className="display-6 mb-0">#2</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function About() {
+  return (
+    <div className="container py-5">
+      <h2 className="mb-3">About OctoFit</h2>
+      <p className="text-muted">
+        This starter app establishes the presentation, logic, and data layers that
+        power a full fitness tracking experience.
+      </p>
+    </div>
+  )
+}
+
+function App() {
+  return (
+    <div>
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div className="container">
+          <Link className="navbar-brand" to="/">
+            OctoFit Tracker
+          </Link>
+          <div className="navbar-nav ms-auto">
+            <Link className="nav-link" to="/">
+              Home
+            </Link>
+            <Link className="nav-link" to="/dashboard">
+              Dashboard
+            </Link>
+            <Link className="nav-link" to="/about">
+              About
+            </Link>
+          </div>
+        </div>
+      </nav>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </div>
   )
 }
 
