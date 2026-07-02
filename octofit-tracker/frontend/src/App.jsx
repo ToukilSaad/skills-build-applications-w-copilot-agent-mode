@@ -1,4 +1,9 @@
-import { Link, Route, Routes } from 'react-router-dom'
+import { NavLink, Route, Routes } from 'react-router-dom'
+import Activities from './components/Activities'
+import Leaderboard from './components/Leaderboard'
+import Teams from './components/Teams'
+import Users from './components/Users'
+import Workouts from './components/Workouts'
 import './App.css'
 
 function Home() {
@@ -8,27 +13,26 @@ function Home() {
         <div className="col-lg-7">
           <h1 className="display-5 fw-bold">OctoFit Tracker</h1>
           <p className="lead text-muted">
-            A modern multi-tier fitness platform for logging activities, building
-            teams, and tracking progress in real time.
+            Monitor your training journey, connect with teammates, and explore the
+            data behind your fitness routine.
           </p>
-          <div className="d-flex gap-3">
-            <Link className="btn btn-primary" to="/dashboard">
-              View dashboard
-            </Link>
-            <Link className="btn btn-outline-secondary" to="/about">
-              Learn more
-            </Link>
+          <div className="d-flex gap-3 flex-wrap">
+            <NavLink className="btn btn-primary" to="/users">
+              Browse users
+            </NavLink>
+            <NavLink className="btn btn-outline-secondary" to="/activities">
+              View activities
+            </NavLink>
           </div>
         </div>
         <div className="col-lg-5">
           <div className="card shadow-sm border-0">
             <div className="card-body">
-              <h2 className="h5">What is included?</h2>
+              <h2 className="h5">Configured for OctoFit</h2>
               <ul className="mb-0">
-                <li>Activity logging</li>
-                <li>Team management</li>
-                <li>Workout suggestions</li>
-                <li>Leaderboard insights</li>
+                <li>Codespaces-aware API URLs</li>
+                <li>Backend routes for all core resources</li>
+                <li>Responsive React navigation</li>
               </ul>
             </div>
           </div>
@@ -38,77 +42,31 @@ function Home() {
   )
 }
 
-function Dashboard() {
-  return (
-    <div className="container py-5">
-      <h2 className="mb-3">Dashboard</h2>
-      <div className="row g-3">
-        <div className="col-md-4">
-          <div className="card shadow-sm border-0">
-            <div className="card-body">
-              <h3 className="h6">Daily activity</h3>
-              <p className="display-6 mb-0">12</p>
-            </div>
-          </div>
-        </div>
-        <div className="col-md-4">
-          <div className="card shadow-sm border-0">
-            <div className="card-body">
-              <h3 className="h6">Active teams</h3>
-              <p className="display-6 mb-0">4</p>
-            </div>
-          </div>
-        </div>
-        <div className="col-md-4">
-          <div className="card shadow-sm border-0">
-            <div className="card-body">
-              <h3 className="h6">Leaderboard</h3>
-              <p className="display-6 mb-0">#2</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-function About() {
-  return (
-    <div className="container py-5">
-      <h2 className="mb-3">About OctoFit</h2>
-      <p className="text-muted">
-        This starter app establishes the presentation, logic, and data layers that
-        power a full fitness tracking experience.
-      </p>
-    </div>
-  )
-}
-
 function App() {
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container">
-          <Link className="navbar-brand" to="/">
+          <NavLink className="navbar-brand" to="/">
             OctoFit Tracker
-          </Link>
+          </NavLink>
           <div className="navbar-nav ms-auto">
-            <Link className="nav-link" to="/">
-              Home
-            </Link>
-            <Link className="nav-link" to="/dashboard">
-              Dashboard
-            </Link>
-            <Link className="nav-link" to="/about">
-              About
-            </Link>
+            <NavLink className="nav-link" to="/">Home</NavLink>
+            <NavLink className="nav-link" to="/users">Users</NavLink>
+            <NavLink className="nav-link" to="/teams">Teams</NavLink>
+            <NavLink className="nav-link" to="/activities">Activities</NavLink>
+            <NavLink className="nav-link" to="/leaderboard">Leaderboard</NavLink>
+            <NavLink className="nav-link" to="/workouts">Workouts</NavLink>
           </div>
         </div>
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/users" element={<Users />} />
+        <Route path="/teams" element={<Teams />} />
+        <Route path="/activities" element={<Activities />} />
+        <Route path="/leaderboard" element={<Leaderboard />} />
+        <Route path="/workouts" element={<Workouts />} />
       </Routes>
     </div>
   )
