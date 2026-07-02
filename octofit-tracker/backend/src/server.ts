@@ -8,9 +8,10 @@ dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 8000;
-const codespaceName = process.env.CODESPACE_NAME;
+const codespaceName = process.env.CODESPACE_NAME ?? '';
+const codespaceUrlSuffix = '-8000.app.github.dev';
 const apiBaseUrl = codespaceName
-  ? `https://${codespaceName}-8000.app.github.dev`
+  ? `https://${codespaceName}${codespaceUrlSuffix}`
   : 'http://localhost:8000';
 
 app.use(cors());
